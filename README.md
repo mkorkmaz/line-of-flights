@@ -8,13 +8,13 @@ FlightRadar24 data collector service script written in Python.
 
 You will need an Elasticsearch instance installed and running.
 Let's say your Elasticsearch runs on 127.0.0.1,
-your index will be named as"radar", type will be named as "logs"
+your index will be named as "radar", type will be named as "logs"
 and you wanna "live track" Turkish Airlines flights.
 
 ```
 git clone https://github.com/mkorkmaz/line-of-flights.git
 cd line-of-flights
-chmod u+rwx mapiings.sh
+chmod u+rwx mappings.sh
 ./mappings.sh 127.0.0.1 radar logs
 pip3 install -r pip.install
 ```
