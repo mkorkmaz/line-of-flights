@@ -15,7 +15,7 @@ ES = Elasticsearch([
 
 headers = {'User-Agent': config['flightradar24']['user_agent']}
 
-balancer_request = requests.get(config['flightradar24']['balancer_config'], headers)
+balancer_request = requests.get(config['flightradar24']['balancer_config'], headers=headers)
 balancer_url = list(balancer_request.json().keys())[0]
 flights_endpoint = str('https://' + balancer_url + config['flightradar24']['endpoint'] + '&bounds=' +
                        config['flightradar24']['bounds']['world'])
