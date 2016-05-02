@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import time
 import requests
 from elasticsearch import Elasticsearch
 import my_functions
@@ -15,13 +16,20 @@ ES = Elasticsearch([
 
 headers = {'User-Agent': config['flightradar24']['user_agent']}
 
-balancer_request = requests.get(config['flightradar24']['balancer_config'], headers=headers)
-balancer_url = list(balancer_request.json().keys())[0]
-flights_endpoint = str('https://' + balancer_url + config['flightradar24']['endpoint'] + '&bounds=' +
-                       config['flightradar24']['bounds']['world'])
-flights_endpoint = flights_endpoint.rstrip()
+if config['flightradar24']['service']=='by_code':
+    flights_endpoint = str(config['flightradar24']['endpoint_live'] + '?airline=!' +
+                           config['flightradar24']['airline_live_data']) + '&_' + \
+                       str(int(time.mktime(time.localtime())*1000))
+    flights_endpoint = flights_endpoint.rstrip()
+    flights_request = requests.get(flights_endpoint, headers=headers)
+else:
 
-flights_request = requests.get(flights_endpoint, headers=headers)
+    balancer_request = requests.get(config['flightradar24']['balancer_config'], headers=headers)
+    balancer_url = list(balancer_request.json().keys())[0]
+    flights_endpoint = str('https://' + balancer_url + config['flightradar24']['endpoint'] + '&bounds=' +
+                           config['flightradar24']['bounds']['world'])
+    flights_endpoint = flights_endpoint.rstrip()
+    flights_request = requests.get(flights_endpoint, headers=headers)
 try:
     flights_data = flights_request.json()
 

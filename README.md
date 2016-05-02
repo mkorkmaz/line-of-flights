@@ -17,6 +17,7 @@ cd line-of-flights
 chmod u+rwx mappings.sh
 ./mappings.sh 127.0.0.1 radar logs
 pip3 install -r pip.install
+cp config.sample.ini config.ini
 ```
 
 Edit config.ini according to your setup and your needs. Then run:
