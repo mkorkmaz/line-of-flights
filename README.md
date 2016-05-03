@@ -1,5 +1,5 @@
 # Line of Flights
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mkorkmaz/line-of-flights/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mkorkmaz/line-of-flights/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/mkorkmaz/line-of-flights/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mkorkmaz/line-of-flights/build-status/master)
 FlightRadar24 data collector service script written in Python.
 
 "[Flightradar24](https://www.flightradar24.com) is a flight tracker that shows live air traffic from around the world. Flightradar24 combines data from several data sources including ADS-B, MLAT and radar data. The ADS-B, MLAT and radar data is aggregated together with schedule and flight status data from airlines and airports." <sup>[*](https://www.flightradar24.com/how-it-works)</sup>
